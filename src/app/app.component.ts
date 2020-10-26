@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { COURSES } from '../db-data';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-client-course';
+  //Lee los cursos de db-data.ts
+  //courses: Course[] = COURSES;
 }
