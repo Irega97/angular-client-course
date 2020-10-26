@@ -13,7 +13,10 @@
       </button>
     </p>
     <p *ngIf="authService.isLoggedIn()">
-      <button (click)="logout()">
+      <button (click)="admin()" class="button">
+        Admin
+      </button>
+      <button (click)="logout()" class="button">
         Logout
       </button>
     </p>

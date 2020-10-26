@@ -23,4 +23,8 @@ export class AppComponent {
     this.authService.logOut();
     this.router.navigateByUrl('/courses');
   }
+
+  admin(){
+    this.router.navigateByUrl('/admin');
+  }
 }

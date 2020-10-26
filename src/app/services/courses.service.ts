@@ -18,7 +18,8 @@ export class CoursesService {
   }
 
   public newCourse(newC: Course){
-    return this.http.post(environment.apiURL + '/add', JSON.stringify(newC));
+    this.http.post(environment.apiURL + '/add', JSON.stringify(newC));
+    return this.http.post('http://localhost:3000/add', newC);
     //return localStorage.setItem('course', JSON.stringify(newC));
   }
 }
