@@ -16,4 +16,10 @@ export class CoursesService {
   loadCourses() {
     return this.http.get<Course[]>(environment.apiURL || 'http://localhost:3000');
   }
+
+  public newCourse(newC: Course){
+    var body = JSON.stringify(newC);
+    return this.http.post<Course>('http://localhost:3000/add', body);
+    //return localStorage.setItem('course', JSON.stringify(newC));
+  }
 }

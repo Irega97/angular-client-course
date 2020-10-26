@@ -1,0 +1,58 @@
+<h1 style="text-align: center">Create new Course</h1>
+<div class="login">
+  <h2 class="login-header">New Course</h2>
+  <form [formGroup]="courseForm" class="login-container" (ngSubmit)="submitCourse()">
+    <input type="id" placeholder="Course id*" formControlName="id" />
+    <ng-container
+      *ngIf="!formControls.id.valid && formControls.id.touched"
+    >
+      <p *ngIf="formControls.id.errors.required">Name is required</p>
+    </ng-container>
+
+    <input type="description" placeholder="Description*" formControlName="description" />
+    <ng-container
+      *ngIf="!formControls.description.valid &&formControls.description.touched"
+    >
+      <p *ngIf="formControls.description.errors.required">
+        Description is required
+      </p>
+    </ng-container>
+
+    <input type="iconUrl" placeholder="iconUrl*" formControlName="iconUrl" />
+    <ng-container
+      *ngIf="!formControls.iconUrl.valid &&formControls.iconUrl.touched"
+    >
+      <p *ngIf="formControls.iconUrl.errors.required">
+        Image icon url is required
+      </p>
+    </ng-container>
+
+    <input type="longDescription" placeholder="Long description" formControlName="longDescription" />
+    <ng-container
+      *ngIf="formControls.longDescription.touched"
+    >
+    </ng-container>
+
+    <input type="category" placeholder="Category*" formControlName="category" />
+    <ng-container
+      *ngIf="!formControls.category.valid &&formControls.category.touched"
+    >
+      <p *ngIf="formControls.category.errors.required">
+        Category is required
+      </p>
+    </ng-container>
+
+    <input type="lessonsCount" placeholder="Lessons Count*" formControlName="lessonsCount" />
+    <ng-container
+      *ngIf="!formControls.lessonsCount.valid &&formControls.lessonsCount.touched"
+    >
+      <p *ngIf="formControls.lessonsCount.errors.required">
+        Number of lessons is required
+      </p>
+    </ng-container>
+
+    <p>
+      <input type="submit" value="Submit" [disabled]="courseForm.invalid" />
+    </p>
+  </form>
+</div>

@@ -1,3 +1,4 @@
+import { CourseFormComponent } from './course-form/course-form.component';
 import { AuthGuard } from './guard/auth.guard';
 import { AdminComponent } from './admin/admin.component';
 import { AuthComponent } from './auth/auth.component';
@@ -11,7 +12,8 @@ const routes: Routes = [
   { path: 'auth', component: AuthComponent},
   //canActivate para comprobar si esta logeado
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},
-  { path: 'courses', component: CoursesComponent}
+  { path: 'courses', component: CoursesComponent},
+  { path: 'newCourse', component:CourseFormComponent }
 ];
 
 @NgModule({

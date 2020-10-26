@@ -3,11 +3,23 @@
     class="logo"
     src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png"
   />
-</div>
  
 <!--{{ course1.}}--><!--VARIABLES EN APP.TS-->
 
+  <div style="text-align:right">
+    <p *ngIf="!authService.isLoggedIn()">
+      <button (click)="login()">
+        Login
+      </button>
+    </p>
+    <p *ngIf="authService.isLoggedIn()">
+      <button (click)="logout()">
+        Logout
+      </button>
+    </p>
+  </div>
+</div>
+
 <!-- RUTAS -->
-<router-outlet>
-  
-</router-outlet>  
+<router-outlet></router-outlet>  
+

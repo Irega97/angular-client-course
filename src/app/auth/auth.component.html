@@ -1,1 +1,37 @@
-<p>auth works!</p>
+<h1 style="text-align: center">Log in && discover our app</h1>
+
+<div class="login">
+  <h2 class="login-header">Log in</h2>
+  
+  <!-- FORMULARIO -->
+  <!--ngSubmit indica que metodo se lanza al darle al boton de submit-->
+  <form [formGroup]="authForm" class="login-container" (ngSubmit)="signIn()">
+    
+        <input type="email" placeholder="Email" formControlName="email" />
+        
+        <!-- NOTIFICACIONES VALIDATORS -->
+        <ng-container
+        *ngIf="!formControls.email.valid && formControls.email.touched"
+        >
+        <p *ngIf="formControls.email.errors.required">Email is required</p>
+        <p *ngIf="formControls.email.errors.email">This field must be an email</p>
+        </ng-container>
+
+        <input type="password" placeholder="Password" formControlName="password" />
+        
+        <!-- NOTIFICACIONES VALIDATORS -->
+        <ng-container
+        *ngIf="!formControls.password.valid && formControls.password.touched"
+        >
+        <p *ngIf="formControls.password.errors.required">
+            Password is required
+        </p>
+        </ng-container>
+        
+        <!-- BOTON -->
+        <p>
+        <input type="submit" value="Log in" [disabled]="authForm.invalid" />
+        </p>
+  
+    </form>
+</div>
