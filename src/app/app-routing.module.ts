@@ -13,7 +13,7 @@ const routes: Routes = [
   //canActivate para comprobar si esta logeado
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},
   { path: 'courses', component: CoursesComponent},
-  { path: 'newCourse', component:CourseFormComponent }
+  { path: 'newCourse', component: CourseFormComponent }
 ];
 
 @NgModule({

@@ -13,7 +13,7 @@ export class CourseFormComponent implements OnInit {
 
   courseForm: FormGroup;
   isSubmitted = false;
-  constructor(private courseService: CoursesService ,private router: Router, private formBuilder: FormBuilder) { }
+  constructor(public courseService: CoursesService, private router: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.courseForm = this.formBuilder.group({
@@ -25,15 +25,16 @@ export class CourseFormComponent implements OnInit {
       lessonsCount:['',[Validators.required, Validators.nullValidator]]
     });
   }
-  get formControls(){return this.courseForm.controls;}
-  
-  submitCourse(){
+  get formControls(){
+    return this.courseForm.controls;
+  }
+
+  submitCourse(): void {
     this.isSubmitted = true;
-    if(this.courseForm.invalid){
+    /* if(this.courseForm.invalid){
       return;
-    }
+    } */
     this.courseService.newCourse(this.courseForm.value);
     this.router.navigateByUrl('/courses');
   }
-
 }
