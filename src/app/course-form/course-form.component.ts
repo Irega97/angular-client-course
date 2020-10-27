@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Course } from '../model/course'
 import { CoursesService } from '../services/courses.service';
 
 
@@ -31,10 +32,12 @@ export class CourseFormComponent implements OnInit {
 
   submitCourse(): void {
     this.isSubmitted = true;
-    /* if(this.courseForm.invalid){
+    if(this.courseForm.invalid){
       return;
-    } */
-    this.courseService.newCourse(this.courseForm.value);
-    this.router.navigateByUrl('/courses');
+    }
+    this.courseService.newCourse(this.courseForm.value)
+    .subscribe((course: Course) => {
+      this.router.navigateByUrl('/courses');
+    });
   }
 }
