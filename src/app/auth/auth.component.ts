@@ -2,6 +2,7 @@ import { AuthService } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Token } from '../model/token';
 
 @Component({
   selector: 'app-auth',
@@ -36,7 +37,9 @@ export class AuthComponent implements OnInit {
       return;
     }
     //LE PASAMOS LOS DATOS DEL FORM COMO PARAMETRO A SIGN IN PORQUE ES UN USER
-    this.authService.signIn(this.authForm.value);
-    this.router.navigateByUrl('/admin');
+    this.authService.signIn(this.authForm.value).subscribe((jwt: Token) => {
+      localStorage.setItem('ACCESS_TOKEN', jwt.token);
+      this.router.navigateByUrl('/admin');
+    });
   }
 }

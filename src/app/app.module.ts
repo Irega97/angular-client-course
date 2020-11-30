@@ -1,13 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-//rutas
+// rutas
 import { AppRoutingModule } from './app-routing.module';
 
-//servicio
-import { HttpClientModule } from '@angular/common/http';
+// HTTP
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './shared/authconfig.interceptor';
 
-//componentes
+// componentes
 import { AppComponent } from './app.component';
 import { CourseCardComponent } from './course-card/course-card.component';
 import { CoursesComponent } from './courses/courses.component';
@@ -15,9 +16,8 @@ import { AuthComponent } from './auth/auth.component';
 import { AdminComponent } from './admin/admin.component';
 import { CourseFormComponent } from './course-form/course-form.component';
 
-//formulario reactivo
+// formulario reactivo
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 
 @NgModule({
   declarations: [
@@ -35,7 +35,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

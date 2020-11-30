@@ -2,6 +2,16 @@
     <h1>
         Welcome to our app!
     </h1>
+    <div style="text-align: center">
+        <h2>USERS</h2>
+    </div>
+    <hr />
+    <div *ngFor="let user of users; index as i">
+        <div style="text-align: center">
+            <h3>{{user.email}}</h3>
+        </div>
+    </div>
+    <hr />
     <button (click)="goCourses()" class="button">COURSES</button>
     <button (click)="goNewCourse()" class="button">CREATE NEW COURSE</button>
 </div>
